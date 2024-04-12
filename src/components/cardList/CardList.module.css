@@ -1,0 +1,17 @@
+.postsWrapper {
+    width: 52%;
+    height: 950px;
+    overflow-y: scroll;
+    margin:  0px;
+    text-align: left;
+    padding: 20px;
+    background-color: rgb(0, 15, 26, 0.7);
+    border-radius: 3px;
+    border: 1px solid gainsboro;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
+  

@@ -1,0 +1,22 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px;
+    border-bottom: 2px solid gainsboro ;
+}
+
+.button {
+    cursor: pointer;
+    border-radius: 30px;
+    height: 40px;
+    width: 70px;
+    background-color: #d93a00;
+    color: whitesmoke;
+    border: 0px;
+    margin-right: 10px;
+}
+
+.button:hover {
+    background-color: #962900;
+}

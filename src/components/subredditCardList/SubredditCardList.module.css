@@ -1,9 +1,9 @@
 .SubredditsListWrapper {
     align-items: center;
     overflow-y: scroll;
-    width: 17%;
+    width: 25%;
     height: 950px;
-    margin:  0px;
+    margin:  6px 3px 6px 6px;
     text-align: center;
     padding: 20px;
     background-color: rgb(0, 15, 26, 0.7);

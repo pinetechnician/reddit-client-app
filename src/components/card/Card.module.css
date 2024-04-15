@@ -1,0 +1,16 @@
+.post {
+    display: inline-block;
+    text-decoration: none; 
+    color: inherit;        
+    cursor: pointer;  
+    border-top: 1px solid gainsboro;
+    margin: 18px 0px;
+    padding: 8px;
+    width: 100%;
+}
+
+.post span {
+    margin: 0;
+    font-size: 13px;
+}
+

@@ -11,11 +11,12 @@ export default function App() {
       <Routes>
         <Route path="/" element={<AppLayout />}>
           <Route index element={<HomePage />} />
-          <Route path="post/:postId" element={<PostPage />} />
-          <Route path="search" element={<SearchResultsPage />} />
+          <Route path="posts/:postId" element={<PostPage />} />
+          
           {/* Additional nested routes can go here */}
         </Route>
       </Routes>
     </BrowserRouter>
   );
 }
+//<Route path="search" element={<SearchResultsPage />} />

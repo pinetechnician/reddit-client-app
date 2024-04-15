@@ -4,7 +4,7 @@
     overflow-y: scroll;
     margin:  6px 6px 6px 3px;
     text-align: left;
-    padding: 20px;
+    padding: 0px;
     background-color: rgb(0, 15, 26, 0.7);
     border-radius: 3px;
     border: 1px solid gainsboro;
@@ -14,4 +14,3 @@
     width: 0px;
     background: transparent;
   }
-  

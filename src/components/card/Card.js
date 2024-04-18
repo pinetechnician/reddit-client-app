@@ -10,8 +10,9 @@ export default function Card({post}) {
         className={styles.post}
         >
             <span>{post.subreddit}</span>
-            <h3>{post.title}</h3>
+            <h2>{post.title}</h2>
             <img src={post.thumbnail} alt={post.title} />
+            <p>💬 {post.num_comments}</p>
         </Link>
     )
 }

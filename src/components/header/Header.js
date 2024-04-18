@@ -7,7 +7,7 @@ export default function Header () {
     return (
         <div className={styles.header}>
             <Link to="/">
-                <h1>LOGO</h1>
+                <h1>redditMinimal</h1>
             </Link>
             
             <SearchBar  />

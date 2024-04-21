@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { loadCommentsForPostId, selectComments, isLoadingComments, errorMessage } from "./commentsSlice";
+import styles from './Comments.module.css';
 import { selectCurrentPost } from "../currentPost/currentPostSlice";
 
 function Comments({postId}) {
@@ -31,9 +32,9 @@ function Comments({postId}) {
     if(!comments) return null;
 
     return (
-        <div>
+        <div className={styles.commentCard}>
             {commentsForPostId.map((comment) => (
-                <div key={comment.id}>
+                <div key={comment.id} >
                     <span>{comment.author}</span>
                     <p>{comment.text}</p>
                 </div>

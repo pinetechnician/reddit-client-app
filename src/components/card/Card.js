@@ -9,10 +9,10 @@ export default function Card({post}) {
         to={ROUTES.postRoute(post.id)}
         className={styles.post}
         >
-            <span>{post.subreddit}</span>
-            <h2>{post.title}</h2>
-            <img src={post.thumbnail} alt={post.title} />
-            <p>💬 {post.num_comments}</p>
+            <span>{post.data.subreddit}</span>
+            <h2>{post.data.title}</h2>
+            <img src={post.data.thumbnail} alt={post.title} />
+            <p className={styles.comments}>💬 {post.data.num_comments}</p>
         </Link>
     )
 }

@@ -9,6 +9,7 @@ import {
     hasError,
 } from "./currentPostSlice";
 import Card from "../../components/card/Card";
+import styles from './CurrentPost.module.css';
 
 function CurrentPost({ postId }) {
     const dispatch = useDispatch();
@@ -33,7 +34,7 @@ function CurrentPost({ postId }) {
     }
 
     return (
-        <div>
+        <div className={styles.currentPost}>
             <Card post={post}/>
         </div>
     );

@@ -62,4 +62,26 @@ const fetchPopularPosts = async() => {
     }
 }
 
+const fetchPostsBySub = async(sub) => {
+    const access_token = await authorizeReddit();
+    const endpoint = `https://oauth.reddit.com/r/${sub}`;
+
+    try {
+        const response = await fetch(endpoint,{
+            method: "GET",
+            headers: { 'Authorization': `Bearer ${access_token}`},
+        });
+        if (response.ok) {
+            const jsonResponse = await response.json();
+            const data = jsonResponse.data.children;
+            console.log(`data returned from oauth: ${JSON.stringify(data, null, 2)}`)
+            return data;
+        } else {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+    } catch(error) {
+        console.log("Error loading posts: ", error);
+    }
+}
+
 export { fetchPopularPosts };

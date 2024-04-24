@@ -1,9 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { mockPosts } from "../../data/posts";
+import { fetchPopularPosts } from "../../Reddit";
+import { useSelector } from "react-redux";
+import { selectPosts } from "../posts/postsSlice";
 
 export const fetchPostById = createAsyncThunk('post/fetchPostById', 
-(postId) => {
-    const post = mockPosts.posts.find(post => post.id === postId.toString());
+async(postId) => {
+    const posts = await fetchPopularPosts();
+    const post = posts.find(post => post.data.id === postId.toString());
+    console.log("current post: ", post);
     return post;
 });
 

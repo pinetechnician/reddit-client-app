@@ -1,5 +1,4 @@
 import React from "react";
-import CardList from "../components/cardList/CardList";
 import Posts from "../features/posts/PostsComponent";
 import SubredditCardList from "../components/subredditCardList/SubredditCardList";
 import styles from "./HomePage.module.css";

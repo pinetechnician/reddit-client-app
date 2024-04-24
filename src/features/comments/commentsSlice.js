@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { mockComments } from "../../data/mockComments";
+
 import { fetchCommentsForPost } from "../../Reddit";
 
 export const loadCommentsForPostId = createAsyncThunk('comments/loadCommentsForPostId',

@@ -1,6 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { mockPosts } from "../../data/posts";
-import { mockComments } from "../../data/mockComments";
 import commentsSlice from "../comments/commentsSlice";
 import { selectPosts } from "../posts/postsSlice";
 import { useSelector } from "react-redux";

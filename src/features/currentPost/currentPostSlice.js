@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { mockPosts } from "../../data/posts";
 import { fetchPopularPosts } from "../../Reddit";
 import { useSelector } from "react-redux";
 import { selectPosts } from "../posts/postsSlice";

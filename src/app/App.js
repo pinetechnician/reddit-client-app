@@ -11,7 +11,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<AppLayout />}>
           <Route index element={<HomePage />} />
-          <Route path="posts/:postId" element={<PostPage />} />
+          <Route path="posts/r/:subreddit/:postId" element={<PostPage />} />
           <Route path="search" element={<SearchResultsPage />} />
           {/* Additional nested routes can go here */}
         </Route>

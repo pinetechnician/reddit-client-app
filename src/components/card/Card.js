@@ -7,16 +7,17 @@ export default function Card({post}) {
     
     return (
        <Link 
-        to={ROUTES.postRoute(post.data.id)}
+        to={ROUTES.postRoute(post.data.subreddit_name_prefixed, post.data.id)}
         className={styles.post}
         >
             <span>{post.data.subreddit}</span>
             <h2>{post.data.title}</h2>
-            {post.data.selftext ? (
-                <div className={styles.thumbnail}>
-                    <p>{post.data.selftext}</p>
-                </div>
-            ) : (post.data.is_video ? 
+            <div className={styles.thumbnail}>
+                <p>{post.data.selftext}</p>
+            </div>
+            {/*post.data.selftext ?*/ 
+                
+              (post.data.is_video ? 
                 <video controls width="250" muted={false} className={styles.thumbnail}>
                     <source src={post.data.secure_media.reddit_video.fallback_url} type="video/mp4" />
                     

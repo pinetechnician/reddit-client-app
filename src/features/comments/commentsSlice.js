@@ -1,16 +1,19 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { mockComments } from "../../data/mockComments";
+import { fetchCommentsForPost } from "../../Reddit";
 
 export const loadCommentsForPostId = createAsyncThunk('comments/loadCommentsForPostId',
-async(postId) => {
-    const comments = await mockComments.comments.filter(comment => comment.link_id.replace('t3_', '') === postId);
-    return {postId, comments};
+async({subreddit, postId}) => {
+    console.log(`postId inside the commentsSlice: ${postId}`);
+    const comments = await fetchCommentsForPost(subreddit, postId);
+    console.log("comments: ", comments)
+    return comments;
 })
 
 export const commentsSlice = createSlice({
     name: 'comments',
     initialState: {
-        commentsByPostId: {},
+        commentsByPostId: [],
         isLoadingComments: false,
         hasError: false,
         error: null
@@ -24,10 +27,10 @@ export const commentsSlice = createSlice({
             .addCase(loadCommentsForPostId.fulfilled, (state, action) =>{
                 state.isLoadingComments = false;
                 state.hasError = false;
-                const { postId, comments } = action.payload;
+                //const { postId, comments } = action.payload;
                 console.log('Action Payload:', JSON.stringify(action.payload, null, 2));
-                state.commentsByPostId[postId] = comments;
-                console.log(JSON.stringify(state.commentsByPostId));
+                state.commentsByPostId = action.payload;
+                console.log("commentsSlice state: ", JSON.stringify(state.commentsByPostId));
             })
             .addCase(loadCommentsForPostId.rejected, (state, action) => {
                 state.isLoadingComments = false;

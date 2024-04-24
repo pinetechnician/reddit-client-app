@@ -11,13 +11,14 @@
 }
 
 .post span {
-    margin: 0;
+    margin-left: 103px;
     font-size: 13px;
 }
 
 .post h2 {
     font-size: 26px;
     margin-left: 103px;
+    margin-right: 103px;
 }
 
 .comments {
@@ -27,7 +28,7 @@
 }
 
 .thumbnail {
-    width: 78%;
+    width: 40%;
     align-self: center;
 }
 

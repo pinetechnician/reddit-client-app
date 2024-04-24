@@ -84,4 +84,27 @@ const fetchPostsBySub = async(sub) => {
     }
 }
 
-export { fetchPopularPosts };
+const fetchCommentsForPost = async(subreddit, postId) => {
+    const access_token = await authorizeReddit();
+    const endpoint = `https://oauth.reddit.com/r/${subreddit}/comments/${postId}`;
+
+    try {
+        const response = await fetch(endpoint, {
+            method: "GET",
+            headers: { 'Authorization': `Bearer ${access_token}`},
+        });
+        if (response.ok) {
+            const jsonResponse = await response.json();
+            console.log(`Comments jsonResponse: ${JSON.stringify(jsonResponse, null, 2)}`);
+            const data = jsonResponse[1].data.children;
+            console.log(`data: ${data}`);
+            return data;
+        } else {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+    } catch(error) {
+        console.log("Error loading comments: ", error);
+    }
+}
+
+export { fetchPopularPosts, fetchCommentsForPost };

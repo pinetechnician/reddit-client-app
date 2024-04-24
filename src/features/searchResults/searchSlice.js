@@ -2,12 +2,15 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { mockPosts } from "../../data/posts";
 import { mockComments } from "../../data/mockComments";
 import commentsSlice from "../comments/commentsSlice";
+import { selectPosts } from "../posts/postsSlice";
+import { useSelector } from "react-redux";
 
 export const searchPosts = createAsyncThunk('search/searchPosts',
 (query) => {
     const regex = new RegExp(query, "i");
-    const posts = mockPosts.posts.filter(post => regex.test(post.title));
-    return posts;
+    const posts = useSelector(selectPosts);
+    const filteredPosts = posts.filter(post => regex.test(post.title));
+    return filteredPosts;
 })
 
 export const searchSlice = createSlice({

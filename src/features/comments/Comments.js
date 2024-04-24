@@ -2,24 +2,22 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { loadCommentsForPostId, selectComments, isLoadingComments, errorMessage } from "./commentsSlice";
 import styles from './Comments.module.css';
-import { selectCurrentPost } from "../currentPost/currentPostSlice";
 
-function Comments({postId}) {
+function Comments({subreddit, postId}) {
     const dispatch = useDispatch();
-    //const post = useSelector(selectCurrentPost);
     const comments = useSelector(selectComments);
     const loading = useSelector(isLoadingComments);
     const error = useSelector(errorMessage);
 
     useEffect(() => {
-        if (postId) {
-            console.log(`fetching comments for post id ${postId}`)
-            dispatch(loadCommentsForPostId(postId));
+        if (subreddit && postId) {
+            console.log(`fetching comments for post id ${postId}`);
+            dispatch(loadCommentsForPostId({subreddit: subreddit, postId: postId}));
         }
-    }, [dispatch, postId]);
+    }, [dispatch, subreddit, postId]);
     
     const commentsForPostId = comments[`${postId}`] ? comments[`${postId}`] : [];
-    console.log(commentsForPostId);
+    console.log(`commentsForPostID: ${JSON.stringify(commentsForPostId, null, 2)}`);
 
     if (loading) {
         return <div>Loading comments...</div>;
@@ -29,14 +27,14 @@ function Comments({postId}) {
         return <div>Error loading comments: {error}</div>;
     }
 
-    if(!comments) return null;
+    if(!comments) return <div>no comments to show</div>;
 
     return (
         <div className={styles.commentCard}>
-            {commentsForPostId.map((comment) => (
-                <div key={comment.id} >
-                    <span>{comment.author}</span>
-                    <p>{comment.text}</p>
+            {comments.map((comment) => (
+                <div key={comment.data.id} >
+                    <span>{comment.data.author}</span>
+                    <p>{comment.data.body}</p>
                 </div>
             ))} 
         </div>
